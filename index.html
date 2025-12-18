@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> Portfolio</title>
+  <meta name="description" content="Khushi Kumari — BCA Fresher ·Face Recognition Attendance System 
+ (Python)" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --bg:#0b1220; --card:#0f1724; --muted:#9fb0c9; --accent:#06b6d4; --accent-2:#7c3aed; --glass: rgba(255,255,255,0.03);
+      --radius:12px; --maxw:1100px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; color-scheme:dark;
+    }
+    body.light{ --bg:#f8fafc; --card:#ffffff; --muted:#61707b; --accent:#0ea5a4; color-scheme:light; color:#071023 }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#031025);color:#e8f5ff}
+    body.light{background:linear-gradient(180deg,#f8fafc,#eef2f7);color:var(--card)}
+    a{color:var(--accent)}
+    img{max-width:100%;display:block}
+    .wrap{width:min(var(--maxw),94%);margin:0 auto;padding:28px 0}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#041022}
+    nav{display:flex;gap:14px;align-items:center}
+    .nav-link{font-weight:600;font-size:14px}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:10px;color:#041022;border:none;cursor:pointer}
+
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start;margin-top:18px}
+    .intro h1{font-size:30px;margin:0}
+    .intro p{color:var(--muted);margin:12px 0 16px;line-height:1.5}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px);padding:16px;border-radius:var(--radius);box-shadow:0 12px 40px rgba(2,6,23,0.6)}
+    body.light .card{background:linear-gradient(180deg, rgba(11,17,32,0.02), rgba(255,255,255,0.6));box-shadow:none}
+
+    .stats{display:flex;gap:10px;margin-top:12px}
+    .stat{flex:1;background:var(--glass);padding:10px;border-radius:10px;text-align:center}
+
+    .about{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:20px}
+    .skills{display:flex;flex-direction:column;gap:10px}
+    .skill{display:flex;justify-content:space-between;align-items:center}
+    .meter{height:10px;background:rgba(255,255,255,0.05);border-radius:999px;overflow:hidden;width:60%}
+    .meter > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+    .projects{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .project{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:12px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{padding:6px 8px;background:rgba(255,255,255,0.03);border-radius:999px;font-size:12px;color:var(--muted)}
+
+    .contact{margin-top:22px;display:grid;grid-template-columns:1fr 340px;gap:16px}
+    input,textarea,select{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit}
+    body.light input, body.light textarea{border-color:rgba(11,17,32,0.06);background:transparent;color:inherit}
+    textarea{min-height:120px}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer{margin-top:28px;padding:18px 0;border-top:1px solid rgba(255,255,255,0.02);text-align:center;color:var(--muted)}
+    .social-row{display:flex;gap:10px;justify-content:center;margin-top:12px}
+    .social-btn{padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.03);display:inline-flex;gap:8px;align-items:center;text-decoration:none;color:inherit}
+    .status{margin-top:8px;font-weight:600}
+
+    /* Review Section */
+    #reviews{margin-top:32px}
+    .review-item{background:var(--glass);padding:10px 14px;border-radius:10px;margin-top:8px}
+    .review-item strong{color:var(--accent)}
+    .visitor-count{margin-top:10px;font-size:14px;color:var(--muted)}
+
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.about{grid-template-columns:1fr}.projects{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.projects{grid-template-columns:1fr}.logo{width:44px;height:44px;font-size:16px}header{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">KK</div>
+        <div>
+          <div style="font-weight:800">Khushi Kumari</div>
+          <div class="small">BCA • Fresher • Full Stack Developer</div>
+        </div>
+      </div>
+
+      <nav>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <button id="modeToggle" class="btn">Toggle theme</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div>
+          <div class="card">
+            <h1>Hi — I’m <span style="color:var(--accent)">Khushi Kumari</span></h1>
+            <p class="small">BCA Student and fresher looking for internships or junior developer roles.</p>
+            <div style="display:flex;gap:12px;margin-top:12px">
+              <a class="btn" href="#contact">Get in touch</a>
+              <a class="small" href="#projects" style="padding:10px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);">See project</a>
+            </div>
+            <div class="stats">
+              <div class="stat"><div style="font-weight:700">3</div><div class="small">Project</div></div>
+              <div class="stat"><div style="font-weight:700">Fresher</div><div class="small">Experience</div></div>
+              <div class="stat"><div style="font-weight:700">BCA</div><div class="small">Education</div></div>
+            </div>
+            <div class="visitor-count">👀 Visitors: <span id="visitCount">0</span></div>
+          </div>
+
+          <section id="projects" style="margin-top:18px">
+            <h3>Selected Project</h3>
+            <div class="project-card" style="position:relative;">
+
+              <article class="project card">
+                
+		<h4>1. Face Recognition Attendance System</h4>
+                <p class="small">Developed a face recognition-based attendance management system Using Python and OpenCV. The system captures real-time images via
+		 Webcam, matches them with stored images, and records attendance Automatically in a database</p>
+                <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Tkinter</span><span class="tag">MYSQL</span></div>
+                
+		<div style="
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    text-align:right;
+">
+    <a class="small" href="#">Live</a>
+    <a class="small" href="#">Source</a>
+</div>
+
+		<h4>2. Multilingual Text Translator (Google Translator Clone)</h4>
+                <p class="small">Created a translator application capable of detecting and converting text between multiple language using Google Translate API.</p>
+                <div class="tags"><span class="tag">Python</span><span class="tag">Googletranslator library</span><span class="tag">Tkinter</span</div>
+                <div style="
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    text-align:right;
+">
+    <a class="small" href="#">Live</a>
+    <a class="small" href="#">Source</a>
+</div>
+
+		
+		<h4>3. System Control Panel (Shutdown/Restar Application)</h4>
+                <p class="small">Designed a simple GUI-based tool that provides buttons for system shutdown, restart, and log off functions.</p>
+                <div class="tags"><span class="tag">Python</span><span class="tag">OS Module</span><span class="tag">Tkinter</span</div>
+                <div style="
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    text-align:right;
+">
+    <a class="small" href="#">Live</a>
+    <a class="small" href="#">Source</a>
+</div>
+
+
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <aside>
+          <div class="card" style="text-align:center">
+            <img src="C:\Users\hp\OneDrive\Desktop\khushi F\k.jpg" alt="Khushi" style="border-radius:10px;margin-bottom:12px;width:140px;height:140px;object-fit:cover"/>
+            <div style="font-weight:700">Khushi Kumari</div>
+            <div class="small">Based in India</div>
+            <div class="social-row">
+              <a class="social-btn" href="https://instagram.com/k_singh_rathour" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a class="social-btn" href="https://github.com/khushi218121" target="_blank"><i class="fab fa-github"></i></a>
+              <a class="social-btn" href="https://www.linkedin.com/in/Khushi-Singh" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+          <div style="margin-top:12px"><a class="btn" href="C:\Users\hp\OneDrive\Desktop\khushi F\resume1.pdf" download>Download CV</a></div>
+        
+        </aside>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about">
+        <div class="card">
+          <h3>About</h3>
+          <p class="small">Hello! My name is Khushi Kumari. I am currently pursuing my Bachelor of Computer Applications (BCA). I enjoy building creative, responsive and functional projects using Python, OpenCV,Tkinter, Googletranslator library,OS Module and MySQL.I have worked on several projects like Face Recognition Attendance System, Education System Project, and various web apps.My goal is to grow as a developer, learn advanced technologies, and create simple solutions for real-life problems. </p>
+          <ul class="small" style="margin-top:8px">
+            <li>Languages & tools: Python,OpenCV, Tkinter</li>
+            <li>Databases: MySQL</li>
+            <li>Education: BCA</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Skills</h4>
+          <div class="skills">
+            <div class="skill"><span>Python</span><div class="meter"><i style="width:78%"></i></div></div>
+            <div class="skill"><span>Basic C++</span><div class="meter"><i style="width:85%"></i></div></div>
+            <div class="skill"><span>Java</span><div class="meter"><i style="width:55%"></i></div></div>
+            <div class="skill"><span>React</span><div class="meter"><i style="width:60%"></i></div></div>
+	    <div class="skill"><span>HTML</span><div class="meter"><i style="width:60%"></i></div></div>
+          
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact">
+        <div class="card">
+          <h3>Contact</h3>
+          <p class="small">Send me a message — I will receive it in my email. (Verify FormSubmit email first time)</p>
+          <form id="contactForm">
+            <input type="hidden" name="_subject" value="New message from Portfolio" />
+            <input type="text" id="cname" name="name" placeholder="Your name" required />
+            <input type="email" id="cemail" name="email" placeholder="Your email" required />
+            <textarea id="cmessage" name="message" placeholder="Your message" required></textarea>
+            <div style="display:flex;gap:8px;align-items:center">
+              <div class="small" id="captchaLabel">Verify: </div>
+              <input type="text" id="captchaInput" placeholder="Answer" style="width:110px" required />
+            </div>
+            <button type="submit" id="sendBtn" class="btn" style="margin-top:10px">Send message</button>
+            <div id="formStatus" class="status"></div>
+          </form>
+        </div>
+
+        <aside class="card">
+          <h4>Quick Info</h4>
+          <p class="small"><strong>Location:</strong> India</p>
+          <p class="small"><strong>Experience:</strong> Fresher</p>
+          <p class="small"><strong>Education:</strong> BCA</p>
+          <div style="margin-top:12px"><a class="btn" href="C:\Users\hp\OneDrive\Desktop\khushi F\resume1.pdf" download>Download CV</a></div>
+        </aside>
+      </section>
+
+      <!-- Reviews Section -->
+      <section id="reviews" class="card">
+        <h3>Visitor Reviews</h3>
+        <form id="reviewForm" style="margin-bottom:10px">
+          <input type="text" id="rname" placeholder="Your name" required />
+          <input type="number" id="rrate" placeholder="Rating (1–5)" min="1" max="5" required />
+          <textarea id="rmsg" placeholder="Your feedback" required></textarea>
+          <button type="submit" class="btn">Submit Review</button>
+        </form>
+        <div id="reviewList"></div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Khushi Kumari — Built with ❤️
+    </footer>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const savedTheme = localStorage.getItem('rk_theme') || 'dark';
+    if(savedTheme === 'light') document.body.classList.add('light');
+    document.getElementById('modeToggle').onclick = ()=>{
+      document.body.classList.toggle('light');
+      localStorage.setItem('rk_theme', document.body.classList.contains('light')?'light':'dark');
+    };
+
+    // Simple captcha
+    function makeCaptcha(){
+      const a=Math.floor(Math.random()*9)+1,b=Math.floor(Math.random()*9)+1;
+      const lbl=document.getElementById('captchaLabel');
+      lbl.textContent=`Verify: ${a} + ${b} = `;
+      lbl.dataset.answer=(a+b).toString();
+    } makeCaptcha();
+
+    // Contact form fix
+    document.getElementById('contactForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const name=document.getElementById('cname').value.trim();
+      const email=document.getElementById('cemail').value.trim();
+      const msg=document.getElementById('cmessage').value.trim();
+      const ans=document.getElementById('captchaInput').value.trim();
+      const lbl=document.getElementById('captchaLabel');
+      const status=document.getElementById('formStatus');
+      const btn=document.getElementById('sendBtn');
+
+      if(ans!==lbl.dataset.answer){status.style.color='orange';status.textContent='❌ Wrong captcha';makeCaptcha();return;}
+      btn.disabled=true;btn.textContent='Sending...';status.textContent='';
+
+      try{
+        const res=await fetch('https://formsubmit.co/ajax/visittokhushi1108@gmail.com',{
+          method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+          body:JSON.stringify({name,email,message:msg})
+        });
+        if(res.ok){status.style.color='lightgreen';status.textContent='✅ Message sent successfully!';e.target.reset();makeCaptcha();}
+        else{status.style.color='red';status.textContent='⚠️ Send failed. Try again.';}
+      }catch(err){status.style.color='red';status.textContent='⚠️ Network error. Check connection.';}
+      finally{btn.disabled=false;btn.textContent='Send message';}
+    });
+
+    // Visitor Counter (stored locally)
+    let visits=parseInt(localStorage.getItem('visitCount')||'0')+1;
+    localStorage.setItem('visitCount',visits);
+    document.getElementById('visitCount').textContent=visits;
+
+    // Reviews System (localStorage)
+    const reviewForm=document.getElementById('reviewForm');
+    const reviewList=document.getElementById('reviewList');
+    function renderReviews(){
+      const arr=JSON.parse(localStorage.getItem('rk_reviews')||'[]');
+      reviewList.innerHTML=arr.length?arr.map(r=>`<div class='review-item'><strong>${r.name}</strong> ⭐${r.rate}<br>${r.msg}</div>`).join(''):'<p class="small">No reviews yet.</p>';
+    } renderReviews();
+    reviewForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const name=document.getElementById('rname').value.trim();
+      const msg=document.getElementById('rmsg').value.trim();
+      const rate=document.getElementById('rrate').value.trim();
+      if(!name||!msg||!rate)return;
+      const arr=JSON.parse(localStorage.getItem('rk_reviews')||'[]');
+      arr.unshift({name,rate,msg});
+      localStorage.setItem('rk_reviews',JSON.stringify(arr));
+      e.target.reset();renderReviews();
+    });
+  </script>
+</body>
+</html>
